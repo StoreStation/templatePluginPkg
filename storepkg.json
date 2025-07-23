@@ -1,0 +1,33 @@
+// Check out this file for a filled-out example https://github.com/StoreStation/cxmbPkg/blob/main/storepkg.json
+// All fields after "type" are "technically" optional but you should fill them if possible.
+// If you don't have them remove link and/or image fields completely for them to be blank in the store.
+// To convert a JPEG into a compatible format use the following command:
+//    ffmpeg -i <input.jpg/input.png/...> -vf scale=128:64,format=yuv420p output.jpg
+// Files such as the install data and preview image are fetched using a content proxy, currently it only allows GitHub urls in this format:
+// - Links that start with https://raw.githubusercontent.com/....... need to be written as githubusercontent:.......
+// - Links that start with https://github.com/....... need to be written as github:.......
+
+{
+    "pkgver": 1,
+    "type": "plugin",
+
+    "name": "PLUGIN NAME",
+    "author": "PLUGIN AUTHOR, USE FEWER THAN 32 CHARS IF POSSIBLE",
+    "description": "PLUGIN DESCRIPTION LINE 1\nLINE 2\nLIMIT TO 3 LINES",
+    "link": "A LINK TO THE REPO OR REMOVE THIS KEY",
+    "image": "A LINK TO A JPEG YUV420 ENCODED 128x64 IMAGE OR REMOVE THIS KEY -> githubusercontent:REPOSITORY-USER/REPOSITORY-NAME/refs/heads/main/A-PREVIEW-FILE-FROM-YOUR-REPO.jpg",
+    "version": "0.0",
+    "download": {
+        "remote": "LINK TO A ZIP FILE FROM GITHUB RELEASES -> github:REPOSITORY-USER/REPOSITORY-NAME/releases/latest/download/FILENAME-IN-LATEST-RELEASE.zip",
+        "compressed": true,
+        "targets": [
+            { "file": "PLUGIN-PRX-NAME.prx", "target": "ms0:/SEPLUGINS/PLUGIN-PRX-NAME.prx" },
+            { "file": "SUBFOLDER/SOMETHING.txt", "target": "ms0:/SEPLUGINS/SUBFOLDER/SOMETHING.txt" }
+        ],
+        "register": [
+            "vsh, ms0:/SEPLUGINS/PLUGIN-PRX-NAME.prx, on",
+            "game, ms0:/SEPLUGINS/PLUGIN-PRX-NAME.prx, on",
+            "pops, ms0:/SEPLUGINS/PLUGIN-PRX-NAME.prx, on"
+        ]
+    }
+}
